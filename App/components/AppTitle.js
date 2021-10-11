@@ -7,6 +7,7 @@ const AppTitle = ({title}) => {
         <View
         style={styles.container}
         >
+        
             <TouchableOpacity>
                 <Text> - </Text>
             </TouchableOpacity>

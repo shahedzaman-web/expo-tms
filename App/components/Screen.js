@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, SafeAreaView,ImageBackground } from 'react-native'
+import { StyleSheet,View,ImageBackground } from 'react-native'
 
 
 const Screen = ({children}) => {
@@ -7,10 +7,10 @@ const Screen = ({children}) => {
         <ImageBackground style={styles.backgroundImage}
         source={require('../assets/image/background.png')}>
 
-        <SafeAreaView
+        <View
         >
         {children}
-        </SafeAreaView>
+        </View>
             
         </ImageBackground>
     )
@@ -24,5 +24,6 @@ const styles = StyleSheet.create({
         width:"100%",
         height:"100%",
         resizeMode:"cover",
+        
     }
 })

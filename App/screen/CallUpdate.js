@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View,TouchableOpacity,Image } from "react-native";
+import { StyleSheet, Text, TextInput, View,TouchableOpacity,Image, SafeAreaView } from "react-native";
 import AppScreen from "../components/AppScreen";
 import AppTitle from "../components/AppTitle";
 import colors from "../config/colors";
@@ -7,9 +7,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-const CallUpdate = () => {
+const CallUpdate = ({navigation}) => {
   return (
     <AppScreen>
+      <SafeAreaView>
       <AppTitle title="Call Update" />
       <View style={styles.container}>
         <View style={styles.box}>
@@ -144,6 +145,7 @@ const CallUpdate = () => {
                 </TouchableOpacity>
             </View>
       </View>
+      </SafeAreaView>
     </AppScreen>
   );
 };

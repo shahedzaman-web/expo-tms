@@ -140,7 +140,7 @@ const OutletScreen = ({ navigation }) => {
               </View>
               {viewSales && (
                 <View style={styles.detailsView}>
-                  <Text>details</Text>
+                  <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque neque enim est ullam dolore voluptatem velit laboriosam aliquid, voluptates amet mollitia, cumque veritatis nostrum obcaecati. Quia voluptatum adipisci animi sapiente?</Text>
                 </View>
               )}
             </View>
@@ -158,7 +158,7 @@ const OutletScreen = ({ navigation }) => {
               </View>
               {viewBrand && (
                 <View style={styles.detailsView}>
-                  <Text>details</Text>
+                  <Text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid, enim commodi saepe excepturi molestias expedita autem! Eius assumenda architecto earum nostrum voluptatem eum, doloribus labore quam, ratione laboriosam omnis expedita.</Text>
                 </View>
               )}
             </View>

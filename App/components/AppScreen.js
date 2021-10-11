@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import Screen from "./Screen";
 import {
   widthPercentageToDP as wp,
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
     left: 0,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 10
+    zIndex: 10,
   },
   button: {
     width: 28,

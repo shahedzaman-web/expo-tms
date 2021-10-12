@@ -1,8 +1,12 @@
-import React from 'react'
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react'
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import colors from '../config/colors'
+import AppMenu from './AppMenu';
 
 const AppTitle = ({title}) => {
+    const [showMenu, setShowMenu] = useState(false);
+    const navigation=useNavigation()
     return (
         <View
         style={styles.container}
@@ -13,8 +17,17 @@ const AppTitle = ({title}) => {
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>
             <View style={{flexDirection:"row"}}>
-            <TouchableOpacity><Text>N</Text></TouchableOpacity>
-            <TouchableOpacity><Text>N</Text></TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => navigation.navigate('Notification')}
+            ><Text>N</Text></TouchableOpacity>
+            <TouchableOpacity
+            onPress={() =>setShowMenu(prevState=>!prevState) }
+            ><Text>N</Text></TouchableOpacity>
+            <View>
+                {
+                    showMenu && <AppMenu/>
+                }
+            </View>
             </View>
            
         </View>
@@ -29,8 +42,9 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
         marginHorizontal:10,
-        marginBottom:10
-        
+        marginBottom:10,
+        position:"relative",
+        zIndex:1
 
     },title:{
         fontSize:16,

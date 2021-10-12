@@ -8,6 +8,8 @@ import OutletScreen from "./App/screen/OutletScreen";
 import DrawerContains from "./App/screen/DrawerContains";
 import HomeScreen from "./App/screen/HomeScreen";
 import CallUpdate from "./App/screen/CallUpdate";
+import PushNotificationScreen from "./App/screen/PushNotificationScreen";
+import CommunicationPannel from "./App/screen/CommunicationPannel";
 
 const AppStack = createNativeStackNavigator();
 const AppStackScreens = () => {
@@ -16,6 +18,9 @@ const AppStackScreens = () => {
       <AppStack.Screen name="Home" component={HomeScreen} />
       <AppStack.Screen name="Outlet" component={OutletScreen} />
       <AppStack.Screen name="CallUpdate" component={CallUpdate} />
+      <AppStack.Screen name="Notification" component={PushNotificationScreen} />
+      <AppStack.Screen name="Communication" component={CommunicationPannel} />
+
     </AppStack.Navigator>
   );
 };

@@ -14,9 +14,11 @@ const HomeScreen = ({navigation}) => {
             <Text style={{fontWeight:"bold",textAlign:"center",}}>Outlet performance & Call Card</Text>
 
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.card}>
-                    <Image source={require('../assets/image/wallet-2.png')} style={{width:100,height:100}}/>
-            <Text style={{fontWeight:"bold",textAlign:"center",}}>Outlet performance & Call Card</Text>
+                <TouchableOpacity style={styles.card}
+                onPress={() => navigation.navigate("Communication")}
+                >
+                    <Image source={require('../assets/image/wallet.png')} style={{width:100,height:100}}/>
+            <Text style={{fontWeight:"bold",textAlign:"center",}}>Communication</Text>
 
                 </TouchableOpacity>
             </View>

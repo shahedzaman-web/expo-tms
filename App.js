@@ -10,6 +10,7 @@ import HomeScreen from "./App/screen/HomeScreen";
 import CallUpdate from "./App/screen/CallUpdate";
 import PushNotificationScreen from "./App/screen/PushNotificationScreen";
 import CommunicationPannel from "./App/screen/CommunicationPannel";
+import SettingsScreen from "./App/screen/SettingsScreen";
 
 const AppStack = createNativeStackNavigator();
 const AppStackScreens = () => {
@@ -20,6 +21,7 @@ const AppStackScreens = () => {
       <AppStack.Screen name="CallUpdate" component={CallUpdate} />
       <AppStack.Screen name="Notification" component={PushNotificationScreen} />
       <AppStack.Screen name="Communication" component={CommunicationPannel} />
+      <AppStack.Screen name="Settings" component={SettingsScreen} />
 
     </AppStack.Navigator>
   );

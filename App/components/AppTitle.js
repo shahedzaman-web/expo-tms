@@ -12,7 +12,9 @@ const AppTitle = ({title}) => {
         style={styles.container}
         >
         
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            >
                 <Text> - </Text>
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>

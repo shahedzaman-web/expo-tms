@@ -4,17 +4,17 @@ import {
   StyleSheet,
   Text,
   View,
-
   FlatList,
   Image,
   TouchableOpacity,
-  Modal
+  Modal,
 } from "react-native";
 import { Video } from "expo-av";
 import {
-    widthPercentageToDP as wp,
-    heightPercentageToDP as hp,
-  } from "react-native-responsive-screen";
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 
 import AppScreen from "../components/AppScreen";
 import AppTitle from "../components/AppTitle";
@@ -24,10 +24,11 @@ const CommunicationPannel = () => {
   const video = useRef(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [status, setStatus] = useState({});
-const [modalItem, setModalItem] = useState({});
-    const handleView=(item)=>{
-        setModalVisible(prevState=>!prevState),setModalItem(item)
-    }
+  const [modalItem, setModalItem] = useState({});
+
+  const handleView = (item) => {
+    setModalVisible((prevState) => !prevState), setModalItem(item);
+  };
 
   const data = [
     {
@@ -68,77 +69,92 @@ const [modalItem, setModalItem] = useState({});
                 <View style={styles.item}>
                   <Text style={styles.title}>{index + 1}.</Text>
                   <View>
-                        {item.type=="photo" &&
-                        <View style={styles.viewContainer}>
-                            <Image source={{uri:item.image}} style={styles.image}/>
-                        </View>
-                }
-                        </View>
-   <View>
-   {item.type=="video" &&
-                <View style={styles.viewContainer}>
-                       <Video
-        ref={video}
-        style={styles.video}
-        source={{
-            uri: item.video,
-        }}
-        useNativeControls
-        resizeMode="contain"
-        isLooping
-        onPlaybackStatusUpdate={status => setStatus(() => status)}
-      />
-   </View>
-                      
-                }
-                </View>
-                  <View style={{width:wp("45%")}}>
+                    {item.type == "photo" && (
+                      <View style={styles.viewContainer}>
+                        <Image
+                          source={{ uri: item.image }}
+                          style={styles.image}
+                        />
+                      </View>
+                    )}
+                  </View>
+                  <View>
+                    {item.type == "video" && (
+                      <View style={styles.viewContainer}>
+                        <Video
+                          ref={video}
+                          style={styles.video}
+                          source={{
+                            uri: item.video,
+                          }}
+                          useNativeControls
+                          resizeMode="contain"
+                          isLooping
+                          onPlaybackStatusUpdate={(status) =>
+                            setStatus(() => status)
+                          }
+                        />
+                      </View>
+                    )}
+                  </View>
+                  <View style={{ width: wp("45%") }}>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.time}>{item.time}</Text>
                     <Text style={styles.brand}>{item.brand}</Text>
                   </View>
                   <View>
-                      <TouchableOpacity
-                        style={styles.button}
-                        onPress={()=>handleView(item)}
-                        >
-                            {
-                                item.type=="photo" ?  <Text style={styles.buttonText}>View</Text> :   <Text style={styles.buttonText}>Play</Text>
-                            }
-                      
-                        </TouchableOpacity>
+                    <TouchableOpacity
+                      style={styles.button}
+                      onPress={() => handleView(item)}
+                    >
+                      {item.type == "photo" ? (
+                        <Text style={styles.buttonText}>View</Text>
+                      ) : (
+                        <Text style={styles.buttonText}>Play</Text>
+                      )}
+                    </TouchableOpacity>
                   </View>
                   <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-          {modalItem.type=="photo" ?
-          <Image source={{uri:modalItem.image}} style={{width:wp("80%"),height: hp("50%")}}/> :
-          <Video
-          ref={video}
-          style={{width:wp("80%"),height:("80%")}}
-          source={{
-            uri: modalItem.video,
-          }}
-          useNativeControls
-          resizeMode="contain"
-          isLooping
-          onPlaybackStatusUpdate={status => setStatus(() => status)}
-        />
-                        }
-            <TouchableOpacity
-              style={{ ...styles.openButton, backgroundColor: colors.primary }}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}>
-              <Text style={styles.textStyle}>Close</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                  >
+                    <View style={styles.centeredView}>
+                      <View style={styles.modalView}>
+                        {modalItem.type == "photo" ? (
+                          <Image
+                            source={{ uri: modalItem.image }}
+                            style={{ width: wp("80%"), height: hp("50%") }}
+                          />
+                        ) : (
+                          <Video
+                            ref={video}
+                            style={{ width: wp("80%"), height: "80%" }}
+                            source={{
+                              uri: modalItem.video,
+                            }}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            onPlaybackStatusUpdate={(status) =>
+                              setStatus(() => status)
+                            }
+                          />
+                        )}
+                        <TouchableOpacity
+                          style={{
+                            ...styles.openButton,
+                            backgroundColor: colors.primary,
+                          }}
+                          onPress={() => {
+                            setModalVisible(!modalVisible);
+                          }}
+                        >
+                          <Text style={styles.textStyle}>Close</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </Modal>
                 </View>
               );
             }}
@@ -161,11 +177,11 @@ const styles = StyleSheet.create({
     right: 0,
   },
   video: {
-    width:80,
-    height:80,
-    borderWidth:1,
-    borderColor:colors.primary,
-    borderRadius:5,
+    width: 80,
+    height: 80,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 5,
   },
   buttons: {
     flexDirection: "row",
@@ -178,70 +194,73 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: wp("100%"),
     padding: 10,
-    
-  },image:{
-      width:80,
-        height:80,
-        borderWidth:1,
-        borderColor:colors.primary,
-        borderRadius:5,
-
-  },title:{
-    fontSize:16,
-    fontWeight:"bold",
-
-  },    time:{
-    fontSize:12,
-    color:"gray",
-    paddingVertical:5,
-  },    brand:{
-    fontSize:14,
-    color:colors.primary,
-    fontWeight:"bold",
-  },viewContainer:{
-      width:wp("30%"),
-  },button:{
-    backgroundColor:colors.primary,
-    padding:10,
-    borderRadius:5,
-    marginVertical:5,
-    },buttonText:{
-        color:"white",
-        fontSize:16,
-        fontWeight:"bold",
-    }, modalView: {
-        margin: 20,
-        marginTop:50,
-        backgroundColor: 'white',
-        borderRadius: 10,
-        height:hp("60%"),
-        padding: 20,
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-      },
-      openButton: {
-        backgroundColor: colors.primary,
-        borderRadius: 2,
-        marginTop:10,
-        padding: 10,
-        elevation: 2,
-      },
-      textStyle: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
-      },
-      modalText: {
-        marginBottom: 15,
-        textAlign: 'center',
-      },
-
-
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 5,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  time: {
+    fontSize: 12,
+    color: "gray",
+    paddingVertical: 5,
+  },
+  brand: {
+    fontSize: 14,
+    color: colors.primary,
+    fontWeight: "bold",
+  },
+  viewContainer: {
+    width: wp("30%"),
+  },
+  button: {
+    backgroundColor: colors.primary,
+    padding: 10,
+    borderRadius: 5,
+    marginVertical: 5,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  modalView: {
+    margin: 20,
+    marginTop: 50,
+    backgroundColor: "white",
+    borderRadius: 10,
+    height: hp("60%"),
+    padding: 20,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  openButton: {
+    backgroundColor: colors.primary,
+    borderRadius: 2,
+    marginTop: 10,
+    padding: 10,
+    elevation: 2,
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+  },
 });

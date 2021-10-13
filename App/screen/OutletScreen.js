@@ -12,6 +12,8 @@ import {
 } from "react-native-responsive-screen";
 import AppScreen from '../components/AppScreen'
 import { SafeAreaView } from 'react-native-safe-area-context'
+
+
 import AppTitle from "../components/AppTitle";
 import colors from "../config/colors";
 

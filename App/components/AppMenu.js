@@ -1,12 +1,15 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
 const AppMenu = () => {
+    const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <TouchableOpacity
       style={styles.button}
+      onPress={() => navigation.navigate("Settings")}
       >
         <Text style={styles.btnText}> Setting</Text>
       </TouchableOpacity>

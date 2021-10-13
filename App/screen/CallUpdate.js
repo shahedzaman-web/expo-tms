@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View,TouchableOpacity,Image, SafeAreaView } from "react-native";
 import AppScreen from "../components/AppScreen";
 import AppTitle from "../components/AppTitle";
@@ -7,7 +7,14 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import CheckBox from '@react-native-community/checkbox';
+
 const CallUpdate = ({navigation}) => {
+
+  const [pcmMaintenance, setPcmMaintenance] = useState(false);
+  const [priceCompliance, setPriceCompliance] = useState(false);
+  const [visibilityItem, setVisibilityItem] = useState(false);
+
   return (
     <AppScreen>
       <SafeAreaView>
@@ -24,6 +31,11 @@ const CallUpdate = ({navigation}) => {
               width: wp("30%"),
             }}
           >
+             <CheckBox
+    disabled={false}
+    value={pcmMaintenance}
+    onValueChange={(newValue) => setPcmMaintenance(newValue)}
+  />
             <Text style={{ color: colors.primary, fontWeight: "600" }}>
               Yes
             </Text>
